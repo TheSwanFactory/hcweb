@@ -1,7 +1,7 @@
 {
   "lock": false,
   "tasks": {
-    "t": "deno test --allow-read --allow-env --unstable-kv  --coverage=cov/ --trace-leaks",
+    "t": "deno test --allow-read --allow-env --coverage=cov/",
     "check": "deno fmt && deno lint --fix && deno check **/*.tsx && deno task t",
 
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable-kv -A -",
