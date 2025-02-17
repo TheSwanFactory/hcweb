@@ -1,9 +1,9 @@
 import { useState } from "preact/hooks";
-import { evaluate } from "../../src/mod.ts";
+//import { evaluate } from "../../src/mod.ts";
 
 function evaluateCode(code: string): string {
   try {
-    const result = evaluate(code);
+    const result = code.toLocaleUpperCase();
     return result.toString();
   } catch (error: unknown) {
     console.error(error);
