@@ -28,9 +28,6 @@ jobs:
         with:
           node-version: lts/*
 
-      - name: Install step
-        run: "deno task manifest"
-
       - name: Build step
         run: "deno task build"
 
