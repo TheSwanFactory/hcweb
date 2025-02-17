@@ -2,7 +2,7 @@
   "lock": false,
   "tasks": {
     "t": "deno test --allow-read --allow-env --unstable-kv  --coverage=cov/ --trace-leaks",
-    "check": "deno fmt && deno lint && deno check **/*.tsx && deno task t",
+    "check": "deno fmt && deno lint --fix && deno check **/*.tsx && deno task t",
 
     "cli": "echo \"import '\\$fresh/src/dev/cli.ts'\" | deno run --unstable-kv -A -",
     "manifest": "deno task cli manifest $(pwd)",
@@ -24,6 +24,7 @@
   ],
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
+    "@swanfactory/hclang": "jsr:@swanfactory/hclang@^0.6.7",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
