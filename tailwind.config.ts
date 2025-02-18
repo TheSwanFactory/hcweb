@@ -1,11 +1,14 @@
-import type { Config } from "tailwindcss";
-import postcss from "@tailwindcss/postcss";
+import { defineConfig } from '@unocss/core';
+import presetUno from '@unocss/preset-uno';
+import presetWind from '@unocss/preset-wind';
 
-export default {
-  content: [
-    "{routes,islands,components}/**/*.{ts,tsx,js,jsx}",
+export default defineConfig({
+  presets: [
+    presetUno(),
+    presetWind(),
   ],
-  plugins: [
-    postcss
-  ]
-} satisfies Config;
+  include: [/\.(ts|tsx|js|jsx)$/],
+  theme: {
+    // Your theme customizations here
+  },
+});
