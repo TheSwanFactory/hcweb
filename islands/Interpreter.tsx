@@ -3,6 +3,7 @@ import { execute } from "@swanfactory/hclang";
 
 function evaluateCode(code: string): string {
   console.log(`Evaluating code: ${code}`);
+  console.log(execute);
   try {
     const result = code.toUpperCase();
     console.log(`Result: ${result}`);
@@ -33,40 +34,27 @@ export default function Interpreter() {
   };
 
   return (
-    <table>
-      <tbody>
-        <tr>
-          <td>
-            <textarea
-              value={text}
-              onChange={(e) => setText((e.target as HTMLTextAreaElement).value)}
-              placeholder="Enter code to evaluate"
-              rows={10}
-              cols={50}
-            />
-            <br />
-            <button
-              onClick={() => handleEvaluation(text)}
-              disabled={isLoading}
-            >
-              Evaluate
-            </button>
-            <div>
-              {isLoading && <div>Evaluating...</div>}
-              {error && (
-                <div style={{ color: "red" }}>
-                  {error}
-                </div>
-              )}
-              {result && !error && (
-                <div>
-                  <pre>{result}</pre>
-                </div>
-              )}
-            </div>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div>
+      <textarea
+        value={text}
+        onChange={(e) => setText((e.target as HTMLTextAreaElement).value)}
+        placeholder="Enter code to evaluate"
+        rows={10}
+        cols={50}
+      />
+      <br />
+      <button onClick={() => handleEvaluation(text)} disabled={isLoading}>
+        Evaluate
+      </button>
+      <div>
+        {isLoading && <div>Evaluating...</div>}
+        {error && <div style={{ color: "red" }}>{error}</div>}
+        {result && !error && (
+          <div>
+            <pre>{result}</pre>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
