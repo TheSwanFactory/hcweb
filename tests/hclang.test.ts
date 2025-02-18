@@ -6,6 +6,6 @@ import { expect } from "jsr:@std/expect";
 describe('evaluate', () => {
     it('should evaluate a simple expression', () => {
         const result = execute('2 + 2');
-        expect(result).toBe(4);
+        expect(result).toBe("4");
     });
 });
