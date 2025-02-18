@@ -30,26 +30,33 @@ export default function Interpreter() {
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <input
-        type="text"
+    <div>
+      <textarea
         value={text}
         onChange={(e) => {
-          setText((e.target as HTMLInputElement).value);
-          handleEvaluation((e.target as HTMLInputElement).value);
+          setText((e.target as HTMLTextAreaElement).value);
+          handleEvaluation((e.target as HTMLTextAreaElement).value);
         }}
-        className="px-4 py-2 border rounded"
         placeholder="Enter code to evaluate"
+        rows={10}
+        cols={50}
       />
+      <br />
+      <button
+        onClick={() => handleEvaluation(text)}
+        disabled={isLoading}
+      >
+        Evaluate
+      </button>
       {isLoading && <div>Evaluating...</div>}
       {error && (
-        <div className="p-4 bg-red-100 text-red-700 rounded">
+        <div style={{ color: 'red' }}>
           {error}
         </div>
       )}
       {result && !error && (
-        <div className="p-4 bg-gray-100 rounded">
-          <pre className="font-mono">{result}</pre>
+        <div>
+          <pre>{result}</pre>
         </div>
       )}
     </div>
