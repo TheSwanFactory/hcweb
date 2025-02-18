@@ -1,8 +1,11 @@
 import { useState } from "preact/hooks";
+import { execute } from "@swanfactory/hclang";
 
 function evaluateCode(code: string): string {
+  console.log(`Evaluating code: ${code}`);
   try {
-    const result = code.toLocaleUpperCase();
+    const result = code.toUpperCase();
+    console.log(`Result: ${result}`);
     return result.toString();
   } catch (error: unknown) {
     console.error(error);
@@ -30,35 +33,40 @@ export default function Interpreter() {
   };
 
   return (
-    <div>
-      <textarea
-        value={text}
-        onChange={(e) => {
-          setText((e.target as HTMLTextAreaElement).value);
-          handleEvaluation((e.target as HTMLTextAreaElement).value);
-        }}
-        placeholder="Enter code to evaluate"
-        rows={10}
-        cols={50}
-      />
-      <br />
-      <button
-        onClick={() => handleEvaluation(text)}
-        disabled={isLoading}
-      >
-        Evaluate
-      </button>
-      {isLoading && <div>Evaluating...</div>}
-      {error && (
-        <div style={{ color: 'red' }}>
-          {error}
-        </div>
-      )}
-      {result && !error && (
-        <div>
-          <pre>{result}</pre>
-        </div>
-      )}
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <textarea
+              value={text}
+              onChange={(e) => setText((e.target as HTMLTextAreaElement).value)}
+              placeholder="Enter code to evaluate"
+              rows={10}
+              cols={50}
+            />
+            <br />
+            <button
+              onClick={() => handleEvaluation(text)}
+              disabled={isLoading}
+            >
+              Evaluate
+            </button>
+            <div>
+              {isLoading && <div>Evaluating...</div>}
+              {error && (
+                <div style={{ color: "red" }}>
+                  {error}
+                </div>
+              )}
+              {result && !error && (
+                <div>
+                  <pre>{result}</pre>
+                </div>
+              )}
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   );
 }
