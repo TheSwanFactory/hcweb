@@ -4,4 +4,7 @@ export default {
   content: [
     "{routes,islands,components}/**/*.{ts,tsx,js,jsx}",
   ],
+  plugins: [
+    require('@tailwindcss/postcss')
+  ]
 } satisfies Config;
