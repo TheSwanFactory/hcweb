@@ -1,11 +1,11 @@
 import { useState } from "preact/hooks";
-// import { execute } from "@swanfactory/hclang";
+import { execute } from "@swanfactory/hclang";
 
 function evaluateCode(code: string): string {
   console.log(`Evaluating code: ${code}`);
-  // console.log(execute);
+  console.log(execute);
   try {
-    const result = code.toUpperCase();
+    const result = execute(code);
     console.log(`Result: ${result}`);
     return result.toString();
   } catch (error: unknown) {
