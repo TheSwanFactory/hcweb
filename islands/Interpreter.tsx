@@ -72,6 +72,9 @@ export default function Interpreter() {
 
   const clearHistory = () => {
     setHistory([]);
+    setText("");
+    setResult("");
+    setError("");
     localStorage.removeItem('hc-history');
   };
 
