@@ -70,6 +70,11 @@ export default function Interpreter() {
     setText((prev) => prev + "\n" + historyItem.code);
   };
 
+  const clearHistory = () => {
+    setHistory([]);
+    localStorage.removeItem('hc-history');
+  };
+
   return (
     <div>
       <textarea
@@ -93,7 +98,15 @@ export default function Interpreter() {
         )}
       </div>
       <div style={{ marginTop: "20px" }}>
-        <h3>History</h3>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <h3>History</h3>
+          <button 
+            onClick={clearHistory}
+            style={{ padding: "4px 8px" }}
+          >
+            Clear History
+          </button>
+        </div>
         <div style={{ maxHeight: "200px", overflowY: "auto" }}>
           {history.map((item, index) => (
             <div 
