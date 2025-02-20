@@ -38,7 +38,16 @@ export default function Interpreter() {
     setError("");
     setIsLoading(true);
     try {
-      const evalResult = evaluateCode(code);
+      // Build context from history
+      const context = history
+        .map(item => item.code)
+        .reverse()
+        .join("\n");
+      
+      // Combine history with new code
+      const fullCode = context ? `${context}\n${code}` : code;
+      
+      const evalResult = evaluateCode(fullCode);
       setResult(evalResult);
       
       const newHistoryItem = {
